@@ -1,0 +1,82 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Character {
+public:
+    string name[100];
+    string age[100];
+    string race[100];
+    string height[100];
+    string attackpower[100];
+    int n;
+
+    Character() {
+        cout << "Enter number of characters: ";
+        cin >> n;
+
+        cout << "\n--- Enter Character Details ---\n";
+        for (int i = 0; i < n; i++) {
+            cout << "\nCharacter " << i + 1 << ":\n";
+            cout << "Name: ";
+            cin >> name[i];
+            cout << "Age: ";
+            cin >> age[i];
+            cout << "Race: ";
+            cin >> race[i];
+            cout << "Height: ";
+            cin >> height[i];
+            cout << "Attack Power: ";
+            cin >> attackpower[i];
+        }
+    }
+
+    void DisplayAll(int index) {
+        cout << "\nCharacter " << index + 1 << " Details:\n";
+        cout << "Name: " << name[index] << endl;
+        cout << "Age: " << age[index] << endl;
+        cout << "Race: " << race[index] << endl;
+        cout << "Height: " << height[index] << endl;
+        cout << "Attack Power: " << attackpower[index] << endl;
+    }
+
+    void DisplaySelective(int index, int choice) {
+        if (choice == 1)
+            cout << "Name: " << name[index] << endl;
+        else if (choice == 2)
+            cout << "Age: " << age[index] << endl;
+        else if (choice == 3)
+            cout << "Race: " << race[index] << endl;
+        // else if (choice == 4)
+        //     cout << "Height: " << height[index] << endl;
+        // else if (choice == 5)
+        //     cout << "Attack Power: " << attackpower[index] << endl;
+        // else if (choice == 6)
+           // DisplayAll(index);
+        else
+            cout << "Invalid choice!" << endl;
+    }
+};
+
+int main() {
+    Character fantasy; 
+
+      cout << "\nEnter which character number to view (1 to " << fantasy.n << "): ";
+    cin >> index;
+    index--; 
+
+    cout << "\n--- What detail do you want to see? ---\n";
+    cout << "1. Name\n";
+    cout << "2. Age\n";
+    cout << "3. Race\n";
+    cout << "4. Height\n";
+    cout << "5. Attack Power\n";
+    cin >> choice;
+
+    if (index >= 0 && index < fantasy.n)
+        fantasy.DisplaySelective(index, choice);
+    else
+        cout << "Invalid character number!" << endl;
+
+    return 0;
+}
